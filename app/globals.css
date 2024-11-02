@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+
+input{
+  @apply w-[400px] border-2 border-gray-200 rounded-md py-2
+  px-6 outline-none bg-zinc-100/40;
+}
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -18,4 +24,4 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
