@@ -2,11 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@500&family=Nunito&family=Roboto+Slab&display=swap');
 
-input{
+/* Custom styles */
+@layer base {
+  h1 {
+    @apply text-h1 font-primary text-gray-200 text-accent/80; /* Use font-primary for h1 */
+  }
+  h2 {
+    @apply text-h2 font-secondary text-accent/80;
+  }
+  h3 {
+    @apply text-h3 font-tertiary;
+  }
+  h4 {
+    @apply text-h4 text-accent font-tertiary; /* Use accent color */
+  }
+  p {
+    @apply text-p font-body  leading-relaxed; /* Apply body font here */
+  }
+
+  button {
+    @apply bg-button text-white font-semibold mx-2 px-4 py-3 rounded-lg shadow-lg hover:bg-button/80 hover:shadow-xl transition duration-200 ease-in-out transform hover:-translate-y-1;
+  }
+}
+
+
+
+
+
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 40px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+
+@media (max-width: 597px) {
+  .card {
+    width: 150px; /* Set width for small screens */
+    height: 150px; /* Set height for small screens */
+  }
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  /* font-family: sans-serif; */
+  /* font-weight: bold; */
+  font-size: 30px;
+  /* margin-top: 80px; */
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+/* input{
   @apply w-[400px] border-2 border-gray-200 rounded-md py-2
   px-6 outline-none bg-zinc-100/40;
-}
+} */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap'); */
+
 
 /* :root {
   --background: #ffffff;
