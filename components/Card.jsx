@@ -4,15 +4,71 @@ import React, { useRef, useState, useEffect } from "react";
 import { MdAttachEmail, MdPhoneForwarded } from "react-icons/md";
 import { IoMdCall, IoLogoWhatsapp, IoIosContact } from "react-icons/io";
 import { FaMapLocationDot, FaLocationDot, FaGlobe } from "react-icons/fa6";
+import { FiCopy } from 'react-icons/fi'; // Import copy icon
+import Image from 'next/image';
+
+
 import { motion, useInView } from 'framer-motion';
+import { QRCodeCanvas } from 'qrcode.react';
+
 
 import ProductCard from "./ProductCard";
+import InfiniteLooper from './ImageGallery';
+import ShareButton from "./ShareButton";
+
+
+
+
+
+
 
 export default function Card() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
-    const ref2 = useRef(null);
-    const isInView2 = useInView(ref2, { once: true });
+
+
+    const [copied, setCopied] = useState(false);
+    const qrRef = useRef();
+
+    const url = "https://example.com/contactt"; // Your URL to share
+
+    // Function to handle copy-to-clipboard
+    const handleCopy = () => {
+        navigator.clipboard.writeText(url).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
+        });
+    };
+
+
+    // Function to save the QR code as an image
+    const saveQRCode = () => {
+        const qrCanvas = qrRef.current.querySelector("canvas");
+        const img = qrCanvas.toDataURL("image/png");
+
+        const link = document.createElement("a");
+        link.href = img;
+        link.download = "QRCode.png";
+        link.click();
+    };
+
+    // Function to share the QR code using the Web Share API
+    const shareQRCode = async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: "Share Contact",
+                    text: "Check out this QR code:",
+                    url: url, // Use the URL or an image if possible
+                });
+            } else {
+                alert("Sharing is not supported on this browser.");
+            }
+        } catch (error) {
+            console.error("Error sharing:", error);
+        }
+    };
+
 
     const handleCall = () => {
         window.location.href = 'tel:+91 6369288358'; // Replace with your phone number
@@ -31,18 +87,29 @@ export default function Card() {
     };
 
 
-   
+
     const products = [
-        { id: 1, name: "Milk and eggs", image:"./assets/p1.jpg"},
-        { id: 2, name: "Oils", image:"./assets/oil.jpg"},
-        { id: 3, name: "Indian Spices", image:"./assets/spices2.jpg"},
-        { id: 4, name: "Rice bags", image:"./assets/rice.jpg"},
-        { id: 5, name: "Kitchen Tools", image:"./assets/kitchen-tools.jpg"},
-        { id: 6, name: "Kids Toys", image:"./assets/toys.jpg"},
-        { id: 7, name: "School Needs", image:"./assets/school.jpg"},
-        { id: 8, name: "Sports equipments", image:"./assets/sports.jpg"},
-        { id: 9, name: "Soft Drinks", image:"./assets/drinks.jpg"},
-        { id: 10, name: "Ice Creams", image:"./assets/icecream.jpg"},
+        { id: 1, name: "Milk and eggs", image: "/assets/p1.webp" },
+        { id: 2, name: "Oils", image: "/assets/oil.webp" },
+        { id: 3, name: "Indian Spices", image: "/assets/spices2.webp" },
+        { id: 4, name: "Rice bags", image: "/assets/rice.webp" },
+        { id: 5, name: "Kitchen Tools", image: "/assets/kitchen-tools.webp" },
+        { id: 6, name: "Kids Toys", image: "/assets/toys.webp" },
+        { id: 7, name: "School Needs", image: "/assets/school.webp" },
+        { id: 8, name: "Sports equipments", image: "/assets/sports.webp" },
+        { id: 9, name: "Soft Drinks", image: "/assets/drinks.webp" },
+        { id: 10, name: "Ice Creams", image: "/assets/icecream.webp" },
+    ];
+
+    const images = [
+        './assets/p1.webp',
+        './assets/oil.webp',
+        './assets/spices2.webp',
+        './assets/rice.webp',
+        './assets/kitchen-tools.webp',
+        './assets/toys.webp',
+        './assets/school.webp',
+        './assets/sports.webp'
     ];
 
     const app = (
@@ -125,7 +192,7 @@ export default function Card() {
                             <motion.h2
                                 className="text-h2 font-secondary font-semibold mt-6 mb-2"
                                 initial={{ opacity: 0, y: -20 }} // Starting state
-                                animate={{ opacity: isInView2 ? 1 : 0, y: isInView2 ? 0 : -20 }} // Conditional animation
+                                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }} // Conditional animation
                                 transition={{ duration: 0.5 }} // Animation duration
                             >
                                 Our Specialties
@@ -133,7 +200,7 @@ export default function Card() {
                             <motion.div
                                 className="w-full h-1 bg-button mx-auto mb-4"
                                 initial={{ width: 0 }}
-                                animate={{ width: isInView2 ? '40%' : 0 }} // Conditional width animation
+                                animate={{ width: isInView ? '40%' : 0 }} // Conditional width animation
                                 transition={{ duration: 0.5 }}
                             />
                             <ul className="list-disc list-inside text-md mb-4">
@@ -147,11 +214,11 @@ export default function Card() {
                             </p>
                         </div>
 
-                        <div ref={ref2} className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                        <div  className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
                             <motion.h2
                                 className="text-3xl font-bold mb-1"
                                 initial={{ opacity: 0, y: -20 }} // Starting state
-                                animate={{ opacity: isInView2 ? 1 : 0, y: isInView2 ? 0 : -20 }} // Conditional animation
+                                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }} // Conditional animation
                                 transition={{ duration: 0.5 }} // Animation duration
                             >
                                 products & services
@@ -159,7 +226,7 @@ export default function Card() {
                             <motion.div
                                 className="w-full h-1 bg-button mx-auto mb-4"
                                 initial={{ width: 0 }}
-                                animate={{ width: isInView2 ? '40%' : 0 }} // Conditional width animation
+                                animate={{ width: isInView ? '40%' : 0 }} // Conditional width animation
                                 transition={{ duration: 0.5 }}
                             />
 
@@ -174,6 +241,130 @@ export default function Card() {
 
                         </div>
 
+                        {/* 
+                        <div  className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                            <section className="min-h-[40%] max-h-[40%]" loading="lazy">
+                                <InfiniteLooper speed={30} direction="right">
+                                    {images.map((image, index) => (
+                                        <div className="contentBlock contentBlock--image" key={index}>
+                                            <img
+                                                src={image}
+                                                alt={`Product ${index + 1}`}
+                                                className="product-image rounded-[15px] transform transition-transform duration-300 hover:scale-90"
+                                            />
+                                        </div>
+                                    ))}
+                                </InfiniteLooper>
+
+                                <InfiniteLooper speed={30} direction="left">
+                                    {images.map((image, index) => (
+                                        <div className="contentBlock contentBlock--image" key={index}>
+                                            <img
+                                                src={image}
+                                                alt={`Product ${index + 1}`}
+                                                className="product-image rounded-[15px] transform transition-transform duration-300 hover:scale-90"
+                                            />
+                                        </div>
+                                    ))}
+                                </InfiniteLooper>
+                            </section>
+                        </div> */}
+                        <div
+                            
+                            className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6"
+                        >
+                            {/* Payment Options Section */}
+                            <motion.h2
+                                className="text-h2 font-secondary font-semibold mt-6 mb-2"
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                Payment Options
+                            </motion.h2>
+                            <motion.div
+                                className="w-full h-1 bg-button mx-auto mb-4"
+                                initial={{ width: 0 }}
+                                animate={{ width: isInView ? '40%' : 0 }}
+                                transition={{ duration: 0.5 }}
+                            />
+                            <ul className="list-disc list-inside text-md mb-4">
+                                <li>Debit card payment.</li>
+                                <li>
+                                    Mobile payment through UPI.
+                                    <ul className="list-inside list-disc ml-4">
+                                        <li>Google Pay</li>
+                                        <li>PhonePe</li>
+                                        <li>Paytm</li>
+                                    </ul>
+                                </li>
+                                <li>Cash on delivery.</li>
+                            </ul>
+
+                            {/* Share Contact Section */}
+                            <motion.h2
+                                className="text-h2 font-secondary font-semibold mt-6 mb-2"
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                Share Contact
+                            </motion.h2>
+                            <motion.div
+                                className="w-full h-1 bg-button mx-auto mb-4"
+                                initial={{ width: 0 }}
+                                animate={{ width: isInView ? '40%' : 0 }}
+                                transition={{ duration: 0.5 }}
+                            />
+
+                            {/* Search Bar-like Design for URL */}
+                            <div className="relative flex items-center w-full max-w-md mb-4 bg-white text-black rounded-lg border border-gray-300 shadow-sm">
+                                <input
+                                    type="text"
+                                    value={url}
+                                    readOnly
+                                    className="w-full px-4 py-2 rounded-l-lg focus:outline-none"
+                                />
+                                <button
+                                    onClick={handleCopy}
+                                    className="px-4 py-2 bg-gray-100 hover:bg-gray-300 rounded-r-lg transition-colors duration-200"
+                                >
+                                    <FiCopy className="text-gray-600" />
+                                </button>
+                                {copied && (
+                                    <span className="absolute top-full mt-1 text-sm text-green-500">
+                                        Copied!
+                                    </span>
+                                )}
+                            </div>
+
+                            <div ref={qrRef} className="mb-4 border-8 border-gray-300 shadow-md shadow-white rounded-lg" >
+                                <QRCodeCanvas value={url} size={200} />
+                            </div>
+
+                            {/* Save and Share Buttons */}
+                            <div className="flex space-x-4">
+                                <button
+                                    onClick={saveQRCode}
+                                    className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300"
+                                >
+                                    Save QR
+                                </button>
+<ShareButton />
+                            </div>
+                        </div>
+                        <footer className="bg-body text-white py-6 rounded-3xl">
+                            <div className="container mx-auto text-center">
+                                <p className="text-sm">&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+                                {/* <div className="flex justify-center space-x-4 mt-4">
+                                    <a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a>
+                                    <span className="text-gray-400">|</span>
+                                    <a href="#" className="text-gray-400 hover:text-white">Terms of Service</a>
+                                    <span className="text-gray-400">|</span>
+                                    <a href="#" className="text-gray-400 hover:text-white">Contact Us</a>
+                                </div> */}
+                            </div>
+                        </footer>
                     </div>
                 </div>
             </section>
