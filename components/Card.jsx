@@ -338,7 +338,7 @@ export default function Card() {
                         </div>
                         <footer className="bg-body text-white py-6 rounded-3xl">
                             <div className="container mx-auto text-center">
-                                <p className="text-sm">&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+                                <p className="text-sm">&copy; {new Date().getFullYear()} Family Mart. All rights reserved.</p>
                                 {/* <div className="flex justify-center space-x-4 mt-4">
                                     <a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a>
                                     <span className="text-gray-400">|</span>
