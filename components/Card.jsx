@@ -5,6 +5,8 @@ import { MdAttachEmail, MdPhoneForwarded } from "react-icons/md";
 import { IoMdCall, IoLogoWhatsapp, IoIosContact } from "react-icons/io";
 import { FaMapLocationDot, FaLocationDot, FaGlobe } from "react-icons/fa6";
 import { FiCopy } from 'react-icons/fi'; // Import copy icon
+import { AiOutlineWhatsApp } from "react-icons/ai"; // Import the WhatsApp icon from React Icons
+
 import Image from 'next/image';
 
 
@@ -15,10 +17,8 @@ import { QRCodeCanvas } from 'qrcode.react';
 import ProductCard from "./ProductCard";
 import InfiniteLooper from './ImageGallery';
 import ShareButton from "./ShareButton";
-
-
-
-
+import InfiniteScrollLogos from "./InfiniteScrollLogos";
+import Reviews from "./Reviews";
 
 
 
@@ -129,10 +129,22 @@ export default function Card() {
                     style={{ backgroundAttachment: 'fixed', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 >
                     <div className="max-w-[500px]">
-                        <div className="grid place-items-center">
-                            <img className="w-auto h-auto mx-auto rounded-3xl border-4 border-black" src="/family-mart.jpeg" alt="Logo2" />
-                            <img className="z-10 w-[200px] h-[200px] mx-auto rounded-[100%] mt-[-100px] border-4 border-black" src="/family-mart.jpeg" alt="Logo2" />
-                        </div>
+                    <div className="grid place-items-center">
+      <Image
+        className="w-auto h-auto mx-auto rounded-3xl border-4 border-black"
+        src="/family-mart.jpeg"
+        alt="Logo2"
+        width={450} // Adjust the width to match your design
+        height={300} // Adjust the height to match your design
+      />
+      <Image
+        className="z-10 w-[200px] h-[200px] mx-auto rounded-[100%] mt-[-100px] border-4 border-black"
+        src="/family-mart.jpeg"
+        alt="Logo2"
+        width={200} // Width should correspond to your design (200px)
+        height={200} // Height should match (200px)
+      />
+    </div>
                         <div className="grid place-items-center rounded-3xl bg-body mt-[-80px] mb-[16px]">
                             <div className="mt-[20%]">
                                 <h1 className="font-bold my-3 text-center">Family Mart</h1>
@@ -147,9 +159,9 @@ export default function Card() {
                                 <button onClick={handleDirections} className="inline-flex items-center gap-2"><FaMapLocationDot /> Directions</button>
                             </div>
                             <div>
-                                <ul className="cursor-pointer text-xl ">
-                                    <li className="flex gap-3 mb-3"><FaLocationDot /> 8D/4 Malaya Street, Kodikkalpnalyam,<br /> Thiruvarur 610001, India</li>
-                                    <li className="flex gap-3 mb-3"><FaGlobe /> https://www.familymart.in</li>
+                                <ul className="cursor-pointer text-xl px-4">
+                                    <li className="flex gap-3 mb-3"><FaLocationDot /> 8D/4 Malaya Street, Kodikkalpnalyam, <br /> Thiruvarur 610001, India</li>
+                                    <li className="flex gap-3 mb-3"><FaGlobe /> https://www.familymart.in </li>
                                     <li className="flex gap-3 mb-3"><MdPhoneForwarded /> +91 9345035514 </li>
                                 </ul>
                                 <div className="my-8 bg-slate-500 w-full">
@@ -214,7 +226,7 @@ export default function Card() {
                             </p>
                         </div>
 
-                        <div  className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                        <div className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
                             <motion.h2
                                 className="text-3xl font-bold mb-1"
                                 initial={{ opacity: 0, y: -20 }} // Starting state
@@ -241,52 +253,48 @@ export default function Card() {
 
                         </div>
 
-                        {/* 
-                        <div  className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
-                            <section className="min-h-[40%] max-h-[40%]" loading="lazy">
-                                <InfiniteLooper speed={30} direction="right">
-                                    {images.map((image, index) => (
-                                        <div className="contentBlock contentBlock--image" key={index}>
-                                            <img
-                                                src={image}
-                                                alt={`Product ${index + 1}`}
-                                                className="product-image rounded-[15px] transform transition-transform duration-300 hover:scale-90"
-                                            />
-                                        </div>
-                                    ))}
-                                </InfiniteLooper>
 
-                                <InfiniteLooper speed={30} direction="left">
-                                    {images.map((image, index) => (
-                                        <div className="contentBlock contentBlock--image" key={index}>
-                                            <img
-                                                src={image}
-                                                alt={`Product ${index + 1}`}
-                                                className="product-image rounded-[15px] transform transition-transform duration-300 hover:scale-90"
-                                            />
-                                        </div>
-                                    ))}
-                                </InfiniteLooper>
-                            </section>
-                        </div> */}
-                        <div
-                            
-                            className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6"
-                        >
-                            {/* Payment Options Section */}
-                            <motion.h2
+                        <div className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                            <h2
                                 className="text-h2 font-secondary font-semibold mt-6 mb-2"
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }}
-                                transition={{ duration: 0.5 }}
                             >
-                                Payment Options
-                            </motion.h2>
+                                Our Brand Vendors
+                            </h2>
                             <motion.div
-                                className="w-full h-1 bg-button mx-auto mb-4"
+                                className="h-1 bg-button mx-auto mb-4 w-[40%]"
+                            />
+                            <InfiniteScrollLogos />
+                        </div>
+                        <div className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                            <h2
+                                className="text-h2 font-secondary font-semibold mt-6 mb-2"
+                            >
+                                Our Brand Vendors
+                            </h2>
+                            <div
+                                className=" h-1 bg-button mx-auto mb-4 w-[30%]"
                                 initial={{ width: 0 }}
                                 animate={{ width: isInView ? '40%' : 0 }}
                                 transition={{ duration: 0.5 }}
+                            />
+
+                            <Reviews />
+                                <iframe className="border-4 rounded-2xl" width="90%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=75A,%20North%20St,%20Kodikkalpalayam,%20Thiruvarur,%20Tamil%20Nadu%20610001+(Family%20Mart)&amp;t=p&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                    <a href="https://www.gps.ie/">gps trackers</a>
+                                </iframe>
+                        </div>
+                        <div
+
+                            className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6"
+                        >
+                            {/* Payment Options Section */}
+                            <h2
+                                className="text-h2 font-secondary font-semibold mt-6 mb-2"
+                            >
+                                Payment Options
+                            </h2>
+                            <div
+                                className=" h-1 bg-button mx-auto mb-4 w-[40%]"
                             />
                             <ul className="list-disc list-inside text-md mb-4">
                                 <li>Debit card payment.</li>
@@ -302,19 +310,14 @@ export default function Card() {
                             </ul>
 
                             {/* Share Contact Section */}
-                            <motion.h2
+                            <h2
                                 className="text-h2 font-secondary font-semibold mt-6 mb-2"
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : -20 }}
-                                transition={{ duration: 0.5 }}
+                     
                             >
                                 Share Contact
-                            </motion.h2>
-                            <motion.div
-                                className="w-full h-1 bg-button mx-auto mb-4"
-                                initial={{ width: 0 }}
-                                animate={{ width: isInView ? '40%' : 0 }}
-                                transition={{ duration: 0.5 }}
+                            </h2>
+                            <div
+                                className=" h-1 bg-button mx-auto mb-4 w-[30%]"
                             />
 
                             {/* Search Bar-like Design for URL */}
@@ -350,7 +353,7 @@ export default function Card() {
                                 >
                                     Save QR
                                 </button>
-<ShareButton />
+                                <ShareButton />
                             </div>
                         </div>
                         <footer className="bg-body text-white py-6 rounded-3xl">
@@ -365,6 +368,15 @@ export default function Card() {
                                 </div> */}
                             </div>
                         </footer>
+                        <div className="fixed bottom-5 right-5 z-50 bg-green-500 rounded-full p-4 shadow-lg hover:bg-green-600">
+                            <a
+                                href="https://wa.me/6369288358" // Replace with your WhatsApp phone number
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <AiOutlineWhatsApp className="text-white text-3xl" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>

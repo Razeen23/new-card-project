@@ -128,3 +128,103 @@ body {
 } */
 
 
+.scroll-container {
+  height: 500px; /* Adjust the height as needed */
+  overflow: hidden;
+  position: relative;
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates a 2-column grid */
+  gap: 30px; /* Adjust the space between columns */
+  align-items: center;
+  grid-auto-rows: max-content; /* Ensures row heights are dynamic */
+}
+
+.logo {
+  width: 100px; /* Adjust the size of the logos */
+  height: auto; /* Ensure the aspect ratio is maintained */
+}
+
+
+
+
+
+/* reviews  */
+
+
+/* Reviews.css */
+
+.reviews-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.review-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-card .name {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.review-card .date {
+  font-size: 12px;
+  /* color: #777; */
+}
+
+.review-card .stars {
+  color: #f5a623;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.review-card .review-text {
+  font-size: 14px;
+  /* color: #333; */
+  margin: 0;
+}
+
+/* Reviews.css */
+
+.button-container {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.load-more-button,
+.hide-reviews-button {
+  margin: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  /* color: #fff; */
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.load-more-button:hover,
+.hide-reviews-button:hover {
+  background-color: #0056b3;
+}

@@ -9,27 +9,25 @@ const ShareButton = () => {
         setIsMobile(userAgent.includes("iphone") || userAgent.includes("android"));
     }, []);
 
-    // Function to handle mobile sharing (using Web Share API)
-    const shareQRCode = async () => {
-        const qrCodeURL = 'your-qrcode-url'; // The URL to share (can be the QR code or related link)
+    // Function to handle sharing logic
+    const shareQRCode = () => {
+        const qrCodeURL = 'your-qrcode-url'; // The URL to share
 
         if (isMobile) {
-            try {
-                if (navigator.share) {
-                    await navigator.share({
-                        title: 'QR Code Share',
-                        text: 'Check out this QR code!',
-                        url: qrCodeURL,
-                    });
-                    console.log('QR Code shared successfully');
-                } else {
-                    alert('Sharing is not supported on this device');
-                }
-            } catch (err) {
-                console.error('Error sharing:', err);
+            // Use the Web Share API for mobile devices
+            if (navigator.share) {
+                navigator.share({
+                    title: 'QR Code Share',
+                    text: 'Check out this QR code!',
+                    url: qrCodeURL,
+                })
+                    .then(() => console.log('QR Code shared successfully'))
+                    .catch((error) => console.error('Error sharing:', error));
+            } else {
+                alert('Sharing is not supported on this device');
             }
         } else {
-            // For desktop, open a popup with social media options
+            // Open a popup window for sharing on desktop
             const popupWidth = 600;
             const popupHeight = 400;
             const popupLeft = (window.innerWidth - popupWidth) / 2;
@@ -37,11 +35,12 @@ const ShareButton = () => {
 
             const popupWindow = window.open(
                 '',
-                '',
+                'SharePopup',
                 `width=${popupWidth},height=${popupHeight},top=${popupTop},left=${popupLeft}`
             );
 
             if (popupWindow) {
+                // Load the content into the popup window
                 popupWindow.document.write(`
                     <html>
                         <head>
@@ -59,6 +58,7 @@ const ShareButton = () => {
                                     color: white;
                                     border: none;
                                     cursor: pointer;
+                                    border-radius: 5px;
                                 }
                                 .social-btn:hover {
                                     background-color: #005a8f;
@@ -84,6 +84,7 @@ const ShareButton = () => {
                         </body>
                     </html>
                 `);
+                popupWindow.focus(); // Bring the popup to the front
             } else {
                 alert('Popup blocked. Please allow popups for this website.');
             }
