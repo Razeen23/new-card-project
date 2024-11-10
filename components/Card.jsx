@@ -15,7 +15,6 @@ import { QRCodeCanvas } from 'qrcode.react';
 
 
 import ProductCard from "./ProductCard";
-import InfiniteLooper from './ImageGallery';
 import ShareButton from "./ShareButton";
 import InfiniteScrollLogos from "./InfiniteScrollLogos";
 import Reviews from "./Reviews";
@@ -30,7 +29,7 @@ export default function Card() {
     const [copied, setCopied] = useState(false);
     const qrRef = useRef();
 
-    const url = "https://example.com/contactt"; // Your URL to share
+    const url = "https://family-mart-eight.vercel.app/"; // Your URL to share
 
     // Function to handle copy-to-clipboard
     const handleCopy = () => {
@@ -83,7 +82,7 @@ export default function Card() {
     };
 
     const handleDirections = () => {
-        window.open('https://www.google.com/maps/dir/?api=1&destination=Your+Destination', '_blank'); // Replace with your destination
+        window.open('https://www.google.com/maps/dir//Family+Mart,+75A,+North+St,+Kodikkalpalayam,+Thiruvarur,+Tamil+Nadu+610001/@10.7842334,79.6463888,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3a5547dd11edb61d:0xc9b714a442e1f2!2m2!1d79.646389!2d10.7841899!3e0?entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D', '_blank'); // Replace with your destination
     };
 
 
@@ -101,25 +100,6 @@ export default function Card() {
         { id: 10, name: "Ice Creams", image: "/assets/icecream.webp" },
     ];
 
-    const images = [
-        './assets/p1.webp',
-        './assets/oil.webp',
-        './assets/spices2.webp',
-        './assets/rice.webp',
-        './assets/kitchen-tools.webp',
-        './assets/toys.webp',
-        './assets/school.webp',
-        './assets/sports.webp'
-    ];
-
-    const app = (
-        <div className="cards-list">
-            <ProductCard title="React" />
-            <ProductCard title="Angular" />
-            <ProductCard title="VueJs" />
-            <ProductCard title="JavaScript" />
-        </div>
-    );
 
     return (
         <div>
@@ -129,22 +109,22 @@ export default function Card() {
                     style={{ backgroundAttachment: 'fixed', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 >
                     <div className="max-w-[500px]">
-                    <div className="grid place-items-center">
-      <Image
-        className="w-auto h-auto mx-auto rounded-3xl border-4 border-black"
-        src="/family-mart.jpeg"
-        alt="Logo2"
-        width={450} // Adjust the width to match your design
-        height={300} // Adjust the height to match your design
-      />
-      <Image
-        className="z-10 w-[200px] h-[200px] mx-auto rounded-[100%] mt-[-100px] border-4 border-black"
-        src="/family-mart.jpeg"
-        alt="Logo2"
-        width={200} // Width should correspond to your design (200px)
-        height={200} // Height should match (200px)
-      />
-    </div>
+                        <div className="grid place-items-center">
+                            <Image
+                                className="w-auto h-auto mx-auto rounded-3xl border-4 border-black"
+                                src="/family-mart.jpeg"
+                                alt="Logo2"
+                                width={450} // Adjust the width to match your design
+                                height={300} // Adjust the height to match your design
+                            />
+                            <Image
+                                className="z-10 w-[200px] h-[200px] mx-auto rounded-[100%] mt-[-100px] border-4 border-black"
+                                src="/family-mart.jpeg"
+                                alt="Logo2"
+                                width={200} // Width should correspond to your design (200px)
+                                height={200} // Height should match (200px)
+                            />
+                        </div>
                         <div className="grid place-items-center rounded-3xl bg-body mt-[-80px] mb-[16px]">
                             <div className="mt-[20%]">
                                 <h1 className="font-bold my-3 text-center">Family Mart</h1>
@@ -160,9 +140,9 @@ export default function Card() {
                             </div>
                             <div>
                                 <ul className="cursor-pointer text-xl px-4">
-                                    <li className="flex gap-3 mb-3"><FaLocationDot /> 8D/4 Malaya Street, Kodikkalpnalyam, <br /> Thiruvarur 610001, India</li>
-                                    <li className="flex gap-3 mb-3"><FaGlobe /> https://www.familymart.in </li>
-                                    <li className="flex gap-3 mb-3"><MdPhoneForwarded /> +91 9345035514 </li>
+                                    <li className="flex gap-3 mb-3"><FaLocationDot /> Family Mart, 75A, North St, <br /> Kodikkalpalayam, Thiruvarur,<br /> Tamil Nadu 610001 </li>
+                                    <li className="flex gap-3 mb-3"><FaGlobe /> https://family-mart-eight.vercel.app </li>
+                                    <li className="flex gap-3 mb-3"><MdPhoneForwarded /> +91 6369288358 </li>
                                 </ul>
                                 <div className="my-8 bg-slate-500 w-full">
                                     <a
@@ -279,9 +259,9 @@ export default function Card() {
                             />
 
                             <Reviews />
-                                <iframe className="border-4 rounded-2xl" width="90%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=75A,%20North%20St,%20Kodikkalpalayam,%20Thiruvarur,%20Tamil%20Nadu%20610001+(Family%20Mart)&amp;t=p&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                                    <a href="https://www.gps.ie/">gps trackers</a>
-                                </iframe>
+                            <iframe className="border-4 rounded-2xl" width="90%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=75A,%20North%20St,%20Kodikkalpalayam,%20Thiruvarur,%20Tamil%20Nadu%20610001+(Family%20Mart)&amp;t=p&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                <a href="https://www.gps.ie/">gps trackers</a>
+                            </iframe>
                         </div>
                         <div
 
@@ -312,7 +292,7 @@ export default function Card() {
                             {/* Share Contact Section */}
                             <h2
                                 className="text-h2 font-secondary font-semibold mt-6 mb-2"
-                     
+
                             >
                                 Share Contact
                             </h2>

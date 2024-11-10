@@ -168,11 +168,13 @@ h1 {
 }
 
 .review-card {
-  border: 1px solid #ddd;
+  border: 1px solid #1b1a1a;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ddd;
+  color: #1b1a1a ;
 }
 
 .review-card .header {
