@@ -344,7 +344,7 @@ export default function Card() {
                                 </div> */}
                             </div>
                         </footer>
-                        <div className="fixed bottom-5 right-5 z-50 bg-green-500 rounded-full p-4 shadow-lg hover:bg-green-600">
+                        <div className="fixed bottom-5 right-5 z-50 bg-green-500 rounded-full p-4 pb-10 shadow-lg hover:bg-green-600">
                             <a
                                 href="https://wa.me/6369288358" // Replace with your WhatsApp phone number
                                 target="_blank"
