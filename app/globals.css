@@ -149,7 +149,16 @@ body {
 
 
 
+.gradient,
+.active {
+  background: linear-gradient(-225deg, #02a64e 0%, #119ff7 100%);
+}
 
+.active {
+  color: #e8e8e8;
+  padding: 1rem;
+  border-radius: 100%;
+}
 
 /* reviews  */
 

@@ -18,6 +18,7 @@ import ProductCard from "./ProductCard";
 import ShareButton from "./ShareButton";
 import InfiniteScrollLogos from "./InfiniteScrollLogos";
 import Reviews from "./Reviews";
+import NavBar from "./NavBar";
 
 
 
@@ -109,7 +110,7 @@ export default function Card() {
                     style={{ backgroundAttachment: 'fixed', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 >
                     <div className="max-w-[500px]">
-                        <div className="grid place-items-center">
+                        <div id="section1" className="grid place-items-center">
                             <Image
                                 className="w-auto h-auto mx-auto rounded-3xl border-4 border-black"
                                 src="/family-mart.jpeg"
@@ -117,13 +118,13 @@ export default function Card() {
                                 width={450} // Adjust the width to match your design
                                 height={300} // Adjust the height to match your design
                             />
-                            <Image
+                            {/* <Image
                                 className="z-10 w-[200px] h-[200px] mx-auto rounded-[100%] mt-[-100px] border-4 border-black"
                                 src="/family-mart.jpeg"
                                 alt="Logo2"
                                 width={200} // Width should correspond to your design (200px)
                                 height={200} // Height should match (200px)
-                            />
+                            /> */}
                         </div>
                         <div className="grid place-items-center rounded-3xl bg-body mt-[-80px] mb-[16px]">
                             <div className="mt-[20%]">
@@ -156,7 +157,7 @@ export default function Card() {
                             </div>
                         </div>
 
-                        <div ref={ref} className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                        <div id="section2" ref={ref} className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
                             <motion.h2
                                 className="text-3xl font-bold mb-1"
                                 initial={{ opacity: 0, y: -20 }} // Starting state
@@ -205,8 +206,7 @@ export default function Card() {
                                 We believe in supporting our local farmers and artisans, and that reflects in the products we offer. Your satisfaction is our top priority, and we look forward to serving you soon!
                             </p>
                         </div>
-
-                        <div className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                        <div id="section3" className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
                             <motion.h2
                                 className="text-3xl font-bold mb-1"
                                 initial={{ opacity: 0, y: -20 }} // Starting state
@@ -232,9 +232,7 @@ export default function Card() {
 
 
                         </div>
-
-
-                        <div className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                        <div id="section4" className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
                             <h2
                                 className="text-h2 font-secondary font-semibold mt-6 mb-2"
                             >
@@ -245,11 +243,11 @@ export default function Card() {
                             />
                             <InfiniteScrollLogos />
                         </div>
-                        <div className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
+                        <div id="section5"className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6">
                             <h2
                                 className="text-h2 font-secondary font-semibold mt-6 mb-2"
                             >
-                                Our Brand Vendors
+                                Customer Reviews
                             </h2>
                             <div
                                 className=" h-1 bg-button mx-auto mb-4 w-[30%]"
@@ -263,9 +261,7 @@ export default function Card() {
                                 <a href="https://www.gps.ie/">gps trackers</a>
                             </iframe>
                         </div>
-                        <div
-
-                            className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6"
+                        <div id="section6"className="grid place-items-center rounded-3xl bg-body mb-[16px] p-6"
                         >
                             {/* Payment Options Section */}
                             <h2
@@ -336,7 +332,7 @@ export default function Card() {
                                 <ShareButton />
                             </div>
                         </div>
-                        <footer className="bg-body text-white py-6 rounded-3xl">
+                        <footer className="bg-body text-white py-6 rounded-3xl mb-20">
                             <div className="container mx-auto text-center">
                                 <p className="text-sm">&copy; {new Date().getFullYear()} Family Mart. All rights reserved.</p>
                                 {/* <div className="flex justify-center space-x-4 mt-4">
@@ -359,6 +355,7 @@ export default function Card() {
                         </div>
                     </div>
                 </div>
+                < NavBar />
             </section>
         </div>
     );

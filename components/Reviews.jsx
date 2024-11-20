@@ -36,7 +36,6 @@ const Reviews = () => {
 
   return (
     <div className="reviews-container">
-      <h2>Customer Reviews</h2>
       {reviews.slice(0, visibleReviews).map((review, index) => (
         <div key={index} className="review-card">
           <div className="header">
