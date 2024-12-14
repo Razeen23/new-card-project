@@ -6,8 +6,8 @@ import './globals.css';
 export default function Home() {
   return (
 <div>
-    <Card />
-  {/* <LoginForm /> */}
+    {/* <Card /> */}
+  <LoginForm />
 </div>
   );
 }
